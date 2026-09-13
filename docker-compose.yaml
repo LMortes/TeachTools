@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: teach-tools-postgres
+    environment:
+      POSTGRES_DB: teach_tools
+      POSTGRES_USER: teach_tools
+      POSTGRES_PASSWORD: teach_tools
+    ports:
+      - "5432:5432"
+    volumes:
+      - teach-tools-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U teach_tools -d teach_tools"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  teach-tools-postgres-data:

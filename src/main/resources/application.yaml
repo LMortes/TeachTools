@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: teach-tools
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/teach_tools
+    username: teach_tools
+    password: teach_tools
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
